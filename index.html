@@ -1,0 +1,1315 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>MoveReady Moving Readiness Check | ModelMoving</title>
+
+  <meta
+    name="description"
+    content="Take the free 12-question MoveReady check and get a personalized moving-readiness score and practical next steps."
+  >
+
+  <meta name="robots" content="noindex,follow">
+  <meta name="theme-color" content="#102b4a">
+
+  <link
+    rel="icon"
+    href="https://routes.modelmoving.com/ModelMoving-Logo.png"
+    type="image/png"
+  >
+
+  <style>
+    :root {
+      --navy: #102b4a;
+      --navy-dark: #07182f;
+      --gold: #c79a3b;
+      --cream: #f7f4ee;
+      --white: #ffffff;
+      --text: #16283d;
+      --muted: #65758b;
+      --line: #dfe6ef;
+      --soft: #eef3f8;
+      --green: #287a4b;
+      --shadow: 0 24px 70px rgba(7, 24, 47, 0.15);
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system,
+        BlinkMacSystemFont, "Segoe UI", sans-serif;
+      color: var(--text);
+      background:
+        radial-gradient(
+          circle at 15% 0%,
+          rgba(199, 154, 59, 0.14),
+          transparent 30%
+        ),
+        linear-gradient(
+          145deg,
+          #fbfaf6 0%,
+          var(--cream) 54%,
+          #eef3f8 100%
+        );
+      line-height: 1.55;
+    }
+
+    button,
+    a {
+      font: inherit;
+    }
+
+    button {
+      cursor: pointer;
+    }
+
+    .shell {
+      width: min(1160px, calc(100% - 32px));
+      margin: 0 auto;
+      padding: 26px 0 46px;
+    }
+
+    .topbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 20px;
+      margin-bottom: 38px;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 13px;
+      text-decoration: none;
+      color: inherit;
+    }
+
+    .brand img {
+      width: 50px;
+      height: 50px;
+      border: 2px solid var(--gold);
+      border-radius: 50%;
+      background: var(--navy-dark);
+      object-fit: cover;
+      box-shadow: 0 8px 20px rgba(7, 24, 47, 0.16);
+    }
+
+    .brand strong {
+      display: block;
+      font: 700 1.45rem/1 Georgia, serif;
+      color: var(--navy);
+    }
+
+    .brand small {
+      display: block;
+      margin-top: 5px;
+      color: var(--gold);
+      font-weight: 800;
+      font-size: 0.64rem;
+      letter-spacing: 2.4px;
+      text-transform: uppercase;
+    }
+
+    .exit {
+      color: var(--navy);
+      font-size: 0.88rem;
+      font-weight: 800;
+      text-decoration: none;
+      padding: 10px 0;
+    }
+
+    .hero {
+      display: grid;
+      grid-template-columns: minmax(0, 0.85fr) minmax(520px, 1.15fr);
+      gap: 64px;
+      align-items: center;
+    }
+
+    .eyebrow {
+      color: var(--gold);
+      font-size: 0.76rem;
+      font-weight: 900;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      margin: 0 0 15px;
+    }
+
+    h1,
+    h2,
+    h3 {
+      font-family: Georgia, "Times New Roman", serif;
+      color: var(--navy);
+    }
+
+    h1 {
+      font-size: clamp(2.85rem, 6vw, 5.6rem);
+      line-height: 0.94;
+      letter-spacing: -2.5px;
+      margin: 0 0 22px;
+    }
+
+    .intro {
+      font-size: 1.12rem;
+      color: #3d5068;
+      max-width: 560px;
+      margin: 0 0 25px;
+    }
+
+    .benefits {
+      display: grid;
+      gap: 12px;
+      margin: 0 0 30px;
+      padding: 0;
+      list-style: none;
+      font-weight: 750;
+      color: #2c4058;
+    }
+
+    .benefits li {
+      display: flex;
+      gap: 11px;
+      align-items: flex-start;
+    }
+
+    .benefits li::before {
+      content: "✓";
+      display: grid;
+      place-items: center;
+      flex: 0 0 24px;
+      height: 24px;
+      border-radius: 50%;
+      background: #e2f0e7;
+      color: var(--green);
+      font-size: 0.8rem;
+      font-weight: 950;
+      margin-top: 1px;
+    }
+
+    .trust {
+      font-size: 0.82rem;
+      color: var(--muted);
+      font-weight: 650;
+    }
+
+    .card {
+      background: rgba(255, 255, 255, 0.96);
+      border: 1px solid rgba(16, 43, 74, 0.1);
+      border-radius: 26px;
+      box-shadow: var(--shadow);
+      overflow: hidden;
+    }
+
+    .card-head {
+      padding: 25px 28px 18px;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .progress-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 16px;
+      margin-bottom: 11px;
+      color: var(--muted);
+      font-weight: 800;
+      font-size: 0.78rem;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+
+    .track {
+      height: 8px;
+      border-radius: 20px;
+      background: #e8edf3;
+      overflow: hidden;
+    }
+
+    .bar {
+      height: 100%;
+      width: 0;
+      background: linear-gradient(90deg, var(--gold), #deb85f);
+      border-radius: inherit;
+      transition: width 0.28s ease;
+    }
+
+    .question-wrap {
+      padding: 29px 28px 26px;
+      min-height: 480px;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .category {
+      margin: 0 0 7px;
+      color: var(--gold);
+      font-weight: 900;
+      font-size: 0.75rem;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+    }
+
+    h2 {
+      font-size: clamp(1.62rem, 3vw, 2.15rem);
+      line-height: 1.15;
+      margin: 0 0 8px;
+    }
+
+    .hint {
+      color: var(--muted);
+      font-size: 0.93rem;
+      margin: 0 0 23px;
+    }
+
+    .options {
+      display: grid;
+      gap: 11px;
+    }
+
+    .option {
+      width: 100%;
+      display: flex;
+      align-items: center;
+      gap: 13px;
+      text-align: left;
+      color: var(--text);
+      background: var(--white);
+      border: 1.5px solid var(--line);
+      border-radius: 14px;
+      padding: 15px 16px;
+      font-weight: 750;
+      transition:
+        border-color 0.18s,
+        transform 0.18s,
+        box-shadow 0.18s,
+        background 0.18s;
+    }
+
+    .option:hover,
+    .option:focus-visible {
+      outline: none;
+      border-color: var(--gold);
+      transform: translateY(-1px);
+      box-shadow: 0 9px 23px rgba(16, 43, 74, 0.09);
+    }
+
+    .option.selected {
+      border-color: var(--gold);
+      background: #fffaf0;
+      box-shadow: 0 0 0 3px rgba(199, 154, 59, 0.13);
+    }
+
+    .radio {
+      display: grid;
+      place-items: center;
+      flex: 0 0 23px;
+      height: 23px;
+      border: 2px solid #bdc8d5;
+      border-radius: 50%;
+    }
+
+    .selected .radio {
+      border-color: var(--gold);
+      background: var(--gold);
+      box-shadow: inset 0 0 0 5px #ffffff;
+    }
+
+    .controls {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 12px;
+      margin-top: auto;
+      padding-top: 24px;
+    }
+
+    .back {
+      border: 0;
+      background: transparent;
+      color: var(--muted);
+      font-weight: 850;
+      padding: 12px 0;
+      visibility: hidden;
+    }
+
+    .back.visible {
+      visibility: visible;
+    }
+
+    .next {
+      border: 0;
+      border-radius: 12px;
+      background: var(--navy);
+      color: #ffffff;
+      font-weight: 900;
+      padding: 14px 23px;
+      min-width: 120px;
+      opacity: 0.42;
+      pointer-events: none;
+      box-shadow: 0 9px 20px rgba(16, 43, 74, 0.17);
+    }
+
+    .next.enabled {
+      opacity: 1;
+      pointer-events: auto;
+    }
+
+    .results {
+      display: none;
+      padding: 30px;
+    }
+
+    .results.show {
+      display: block;
+    }
+
+    .question-wrap.hide,
+    .card-head.hide {
+      display: none;
+    }
+
+    .score-grid {
+      display: grid;
+      grid-template-columns: 155px 1fr;
+      gap: 25px;
+      align-items: center;
+      margin-bottom: 24px;
+    }
+
+    .score-ring {
+      width: 150px;
+      height: 150px;
+      border-radius: 50%;
+      display: grid;
+      place-items: center;
+      background: conic-gradient(
+        var(--gold) 0deg,
+        #e8edf3 0deg
+      );
+      position: relative;
+    }
+
+    .score-ring::before {
+      content: "";
+      position: absolute;
+      inset: 11px;
+      border-radius: 50%;
+      background: #ffffff;
+    }
+
+    .score-number {
+      position: relative;
+      text-align: center;
+      font: 700 2.7rem/1 Georgia, serif;
+      color: var(--navy);
+    }
+
+    .score-number span {
+      display: block;
+      font: 800 0.67rem/1.2 Inter, sans-serif;
+      color: var(--muted);
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      margin-top: 6px;
+    }
+
+    .result-kicker {
+      color: var(--gold);
+      font-weight: 900;
+      font-size: 0.75rem;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+    }
+
+    .result-title {
+      font-size: 2rem;
+      line-height: 1.08;
+      margin: 5px 0 9px;
+    }
+
+    .result-copy {
+      color: #43566d;
+      margin: 0;
+    }
+
+    .route-pill {
+      display: none;
+      width: fit-content;
+      margin: 12px 0 0;
+      padding: 7px 11px;
+      border-radius: 999px;
+      background: var(--soft);
+      color: var(--navy);
+      font-weight: 850;
+      font-size: 0.78rem;
+    }
+
+    .route-pill.show {
+      display: block;
+    }
+
+    .breakdown {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 9px;
+      margin: 22px 0;
+    }
+
+    .metric {
+      background: var(--soft);
+      border-radius: 13px;
+      padding: 12px 9px;
+      text-align: center;
+    }
+
+    .metric strong {
+      display: block;
+      color: var(--navy);
+      font-size: 1.08rem;
+    }
+
+    .metric span {
+      font-size: 0.7rem;
+      color: var(--muted);
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    .plan {
+      background: #fffaf1;
+      border: 1px solid rgba(199, 154, 59, 0.25);
+      border-radius: 16px;
+      padding: 18px 19px;
+      margin: 0 0 20px;
+    }
+
+    .plan h3 {
+      margin: 0 0 10px;
+      font-size: 1.18rem;
+    }
+
+    .plan ol {
+      margin: 0;
+      padding-left: 21px;
+      color: #344960;
+    }
+
+    .plan li + li {
+      margin-top: 7px;
+    }
+
+    .result-actions {
+      display: grid;
+      grid-template-columns: 1.25fr 0.75fr;
+      gap: 10px;
+    }
+
+    .cta,
+    .retake {
+      border-radius: 13px;
+      padding: 15px 16px;
+      font-weight: 900;
+      text-align: center;
+      text-decoration: none;
+    }
+
+    .cta {
+      background: var(--navy);
+      color: #ffffff;
+      border: 1px solid var(--navy);
+    }
+
+    .retake {
+      background: #ffffff;
+      color: var(--navy);
+      border: 1px solid var(--line);
+    }
+
+    .fine {
+      margin: 14px 0 0;
+      color: var(--muted);
+      font-size: 0.7rem;
+      text-align: center;
+    }
+
+    @media (max-width: 900px) {
+      .hero {
+        grid-template-columns: 1fr;
+        gap: 34px;
+      }
+
+      .hero-copy {
+        max-width: 720px;
+      }
+
+      h1 {
+        font-size: clamp(3rem, 12vw, 5rem);
+      }
+
+      .question-wrap {
+        min-height: 450px;
+      }
+    }
+
+    @media (max-width: 600px) {
+      .shell {
+        width: min(100% - 20px, 1160px);
+        padding-top: 16px;
+      }
+
+      .topbar {
+        margin-bottom: 25px;
+      }
+
+      .brand img {
+        width: 43px;
+        height: 43px;
+      }
+
+      .brand strong {
+        font-size: 1.2rem;
+      }
+
+      .brand small {
+        letter-spacing: 1.6px;
+      }
+
+      .exit {
+        font-size: 0.78rem;
+      }
+
+      .hero {
+        gap: 26px;
+      }
+
+      .hero-copy h1 {
+        font-size: 2.85rem;
+      }
+
+      .intro {
+        font-size: 1rem;
+      }
+
+      .benefits {
+        font-size: 0.9rem;
+        margin-bottom: 18px;
+      }
+
+      .card {
+        border-radius: 20px;
+      }
+
+      .card-head {
+        padding: 19px 19px 15px;
+      }
+
+      .question-wrap {
+        padding: 23px 19px 20px;
+        min-height: 485px;
+      }
+
+      .option {
+        padding: 14px 13px;
+        font-size: 0.9rem;
+      }
+
+      .results {
+        padding: 24px 19px;
+      }
+
+      .score-grid {
+        grid-template-columns: 1fr;
+        text-align: center;
+      }
+
+      .score-ring {
+        margin: auto;
+      }
+
+      .route-pill {
+        margin: 12px auto 0;
+      }
+
+      .breakdown {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .result-actions {
+        grid-template-columns: 1fr;
+      }
+
+      .trust {
+        font-size: 0.75rem;
+      }
+
+      .fine {
+        line-height: 1.4;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      * {
+        scroll-behavior: auto !important;
+        transition: none !important;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <main class="shell">
+    <header class="topbar">
+      <a
+        class="brand"
+        id="homeLink"
+        href="https://modelmoving.com"
+        aria-label="ModelMoving home"
+      >
+        <img
+          id="brandLogo"
+          src="https://routes.modelmoving.com/ModelMoving-Logo.png"
+          alt="ModelMoving logo"
+        >
+
+        <span>
+          <strong id="brandName">ModelMoving</strong>
+          <small>MoveReady Check</small>
+        </span>
+      </a>
+
+      <a
+        class="exit"
+        id="exitLink"
+        href="https://modelmoving.com"
+      >
+        Back to website →
+      </a>
+    </header>
+
+    <section class="hero">
+      <div class="hero-copy">
+        <p class="eyebrow">Free 3-minute moving check</p>
+
+        <h1>How ready are you to move?</h1>
+
+        <p class="intro">
+          Answer 12 quick questions and get your personalized
+          MoveReady score, planning gaps, and clearest next steps.
+        </p>
+
+        <ul class="benefits">
+          <li>No email required to see your result</li>
+          <li>Built for local and long-distance moves</li>
+          <li>Practical recommendations—not generic advice</li>
+        </ul>
+
+        <p class="trust">
+          Free planning tool from
+          <span id="trustBrand">ModelMoving</span>.
+          Your answers stay in this browser unless you choose to
+          request quote help.
+        </p>
+      </div>
+
+      <section
+        class="card"
+        aria-live="polite"
+        aria-label="MoveReady assessment"
+      >
+        <div class="card-head" id="cardHead">
+          <div class="progress-row">
+            <span id="stepLabel">Question 1 of 12</span>
+            <span id="percentLabel">0% complete</span>
+          </div>
+
+          <div
+            class="track"
+            role="progressbar"
+            aria-valuemin="0"
+            aria-valuemax="12"
+            aria-valuenow="0"
+            id="progressTrack"
+          >
+            <div class="bar" id="progressBar"></div>
+          </div>
+        </div>
+
+        <div class="question-wrap" id="questionWrap">
+          <p class="category" id="category"></p>
+          <h2 id="question"></h2>
+          <p class="hint" id="hint"></p>
+
+          <div class="options" id="options"></div>
+
+          <div class="controls">
+            <button class="back" id="backBtn" type="button">
+              ← Back
+            </button>
+
+            <button class="next" id="nextBtn" type="button">
+              Next
+            </button>
+          </div>
+        </div>
+
+        <div class="results" id="results">
+          <div class="score-grid">
+            <div class="score-ring" id="scoreRing">
+              <div class="score-number">
+                <b id="score">0</b>
+                <span>out of 100</span>
+              </div>
+            </div>
+
+            <div>
+              <div class="result-kicker">
+                Your MoveReady result
+              </div>
+
+              <h2 class="result-title" id="resultTitle"></h2>
+              <p class="result-copy" id="resultCopy"></p>
+              <p class="route-pill" id="routePill"></p>
+            </div>
+          </div>
+
+          <div class="breakdown" id="breakdown"></div>
+
+          <div class="plan">
+            <h3>Your three best next steps</h3>
+            <ol id="nextSteps"></ol>
+          </div>
+
+          <div class="result-actions">
+            <a
+              class="cta"
+              id="quoteCta"
+              href="https://modelmoving.com"
+            >
+              Get personalized quote help
+            </a>
+
+            <button
+              class="retake"
+              id="retakeBtn"
+              type="button"
+            >
+              Retake the check
+            </button>
+          </div>
+
+          <p class="fine">
+            MoveReady is a planning aid, not a moving estimate or
+            guarantee of service, pricing, timing, or availability.
+          </p>
+        </div>
+      </section>
+    </section>
+  </main>
+
+  <script>
+    const questions = [
+      {
+        category: "Timeline",
+        q: "Where are you in your moving timeline?",
+        hint: "Choose the answer that best reflects today.",
+        options: [
+          ["I’m exploring without a date", 0],
+          ["More than 3 months away", 3],
+          ["About 1–3 months away", 4],
+          ["Less than 30 days away", 2]
+        ]
+      },
+      {
+        category: "Timeline",
+        q: "How certain is your move date?",
+        hint: "A firm date makes availability and planning much easier.",
+        options: [
+          ["Confirmed date", 4],
+          ["A preferred week", 3],
+          ["A general month", 2],
+          ["Not sure yet", 0]
+        ]
+      },
+      {
+        category: "Logistics",
+        q: "How clear are your pickup and delivery locations?",
+        hint: "Exact addresses are best, but cities or ZIP codes still help.",
+        options: [
+          ["Both addresses are confirmed", 4],
+          ["I know both cities or ZIP codes", 3],
+          ["I know only one side", 1],
+          ["One or both are undecided", 0]
+        ]
+      },
+      {
+        category: "Inventory",
+        q: "How well do you know what is moving?",
+        hint: "Think furniture, boxes, storage, garage, and specialty items.",
+        options: [
+          ["I have a detailed inventory or survey", 4],
+          ["I have a room-by-room list", 3],
+          ["I have a rough idea", 2],
+          ["I haven’t inventoried yet", 0]
+        ]
+      },
+      {
+        category: "Inventory",
+        q: "Where are you with decluttering?",
+        hint: "Removing items early can improve planning and quote accuracy.",
+        options: [
+          ["Finished", 4],
+          ["Actively working on it", 3],
+          ["I know what I’ll remove", 2],
+          ["I haven’t started", 0]
+        ]
+      },
+      {
+        category: "Inventory",
+        q: "Have you identified special or fragile items?",
+        hint: "Examples include artwork, mirrors, safes, pianos, antiques, and oversized pieces.",
+        options: [
+          ["Yes, with sizes or photos ready", 4],
+          ["Yes, but I need details", 2],
+          ["I’m not sure what counts", 1],
+          ["I have none", 4]
+        ]
+      },
+      {
+        category: "Planning",
+        q: "What is your packing plan?",
+        hint: "Include boxes, fragile packing, and who will pack each area.",
+        options: [
+          ["Decided and already underway", 4],
+          ["Decided but not started", 3],
+          ["I’m comparing self-pack vs. help", 2],
+          ["No plan yet", 0]
+        ]
+      },
+      {
+        category: "Logistics",
+        q: "Have you checked access at both locations?",
+        hint: "Stairs, elevators, long walks, gates, and narrow streets can affect the move.",
+        options: [
+          ["Checked and documented", 4],
+          ["Checked one location", 2],
+          ["I know there may be challenges", 1],
+          ["Not checked yet", 0]
+        ]
+      },
+      {
+        category: "Logistics",
+        q: "Are parking, elevators, or building rules handled?",
+        hint: "Some buildings require reservations, certificates, or limited move hours.",
+        options: [
+          ["Confirmed or not applicable", 4],
+          ["I know what needs arranging", 3],
+          ["I still need to ask", 1],
+          ["I’m not sure", 0]
+        ]
+      },
+      {
+        category: "Quote prep",
+        q: "How prepared are you to compare moving quotes?",
+        hint: "Comparable quotes should use the same inventory and service scope.",
+        options: [
+          ["I have detailed written quotes", 4],
+          ["I have one detailed quote", 3],
+          ["I’m beginning research", 1],
+          ["I haven’t started", 0]
+        ]
+      },
+      {
+        category: "Quote prep",
+        q: "Have you reviewed what the price includes?",
+        hint: "Think packing, stairs, shuttle needs, valuation coverage, and possible extra services.",
+        options: [
+          ["Yes, line by line", 4],
+          ["I understand most of it", 3],
+          ["Only the total price", 1],
+          ["Not yet", 0]
+        ]
+      },
+      {
+        category: "Quote prep",
+        q: "What would help you most right now?",
+        hint: "This helps shape the recommendations in your result.",
+        options: [
+          ["A detailed moving quote", 4],
+          ["Help confirming inventory and services", 3],
+          ["A plan for what to do next", 2],
+          ["I’m still exploring", 1]
+        ]
+      }
+    ];
+
+    const categoryAdvice = {
+      Timeline:
+        "Confirm your target move window and keep one backup date before checking availability.",
+
+      Inventory:
+        "Create a room-by-room inventory, including storage and photos or measurements of specialty items.",
+
+      Logistics:
+        "Verify stairs, elevators, parking, access distance, gates, and building requirements at both addresses.",
+
+      Planning:
+        "Decide what you will pack yourself and what needs professional packing before comparing service options.",
+
+      "Quote prep":
+        "Request quotes using the same inventory and services, then compare the written details—not only the total price."
+    };
+
+    const params = new URLSearchParams(location.search);
+
+    const safeText = (value, fallback, max = 60) =>
+      value && /^[\w .,'&()\-]+$/.test(value)
+        ? value.slice(0, max)
+        : fallback;
+
+    const safeUrl = (value, fallback) => {
+      try {
+        const url = new URL(value);
+
+        return /^https?:$/.test(url.protocol)
+          ? url.href
+          : fallback;
+      } catch {
+        return fallback;
+      }
+    };
+
+    const brand = safeText(
+      params.get("company"),
+      "ModelMoving"
+    );
+
+    const route = safeText(
+      params.get("route"),
+      "",
+      90
+    );
+
+    const homeUrl = safeUrl(
+      params.get("home"),
+      "https://modelmoving.com"
+    );
+
+    const quoteUrl = safeUrl(
+      params.get("quote"),
+      "https://modelmoving.com"
+    );
+
+    const logoUrl = safeUrl(
+      params.get("logo"),
+      "https://routes.modelmoving.com/ModelMoving-Logo.png"
+    );
+
+    const primary = params.get("primary");
+    const accent = params.get("accent");
+
+    if (/^#[0-9a-fA-F]{6}$/.test(primary || "")) {
+      document.documentElement.style.setProperty(
+        "--navy",
+        primary
+      );
+    }
+
+    if (/^#[0-9a-fA-F]{6}$/.test(accent || "")) {
+      document.documentElement.style.setProperty(
+        "--gold",
+        accent
+      );
+    }
+
+    document.getElementById("brandName").textContent = brand;
+    document.getElementById("trustBrand").textContent = brand;
+    document.getElementById("brandLogo").src = logoUrl;
+    document.getElementById("brandLogo").alt = `${brand} logo`;
+    document.getElementById("homeLink").href = homeUrl;
+    document.getElementById("exitLink").href = homeUrl;
+    document.getElementById(
+      "exitLink"
+    ).textContent = `Back to ${brand} →`;
+
+    let current = 0;
+    let answers = Array(questions.length).fill(null);
+
+    const el = (id) => document.getElementById(id);
+
+    function renderQuestion() {
+      const item = questions[current];
+
+      el("stepLabel").textContent =
+        `Question ${current + 1} of ${questions.length}`;
+
+      el("percentLabel").textContent =
+        `${Math.round(current / questions.length * 100)}% complete`;
+
+      el("progressBar").style.width =
+        `${current / questions.length * 100}%`;
+
+      el("progressTrack").setAttribute(
+        "aria-valuenow",
+        String(current)
+      );
+
+      el("category").textContent = item.category;
+      el("question").textContent = item.q;
+      el("hint").textContent = item.hint;
+      el("options").innerHTML = "";
+
+      item.options.forEach(([label, score], index) => {
+        const button = document.createElement("button");
+
+        button.type = "button";
+
+        button.className =
+          `option${answers[current]?.index === index
+            ? " selected"
+            : ""}`;
+
+        button.innerHTML =
+          `<span class="radio" aria-hidden="true"></span><span></span>`;
+
+        button.lastElementChild.textContent = label;
+
+        button.addEventListener(
+          "click",
+          () => selectOption(index, score)
+        );
+
+        el("options").appendChild(button);
+      });
+
+      el("backBtn").classList.toggle(
+        "visible",
+        current > 0
+      );
+
+      el("nextBtn").classList.toggle(
+        "enabled",
+        answers[current] !== null
+      );
+
+      el("nextBtn").textContent =
+        current === questions.length - 1
+          ? "See my score"
+          : "Next";
+    }
+
+    function selectOption(index, score) {
+      answers[current] = {
+        index,
+        score
+      };
+
+      [...el("options").children].forEach(
+        (node, i) => {
+          node.classList.toggle(
+            "selected",
+            i === index
+          );
+        }
+      );
+
+      el("nextBtn").classList.add("enabled");
+    }
+
+    function categoryScores() {
+      const groups = {};
+
+      questions.forEach((item, i) => {
+        groups[item.category] ||= {
+          earned: 0,
+          max: 0
+        };
+
+        groups[item.category].earned +=
+          answers[i]?.score || 0;
+
+        groups[item.category].max += 4;
+      });
+
+      return Object.fromEntries(
+        Object.entries(groups).map(
+          ([key, value]) => [
+            key,
+            Math.round(
+              value.earned / value.max * 100
+            )
+          ]
+        )
+      );
+    }
+
+    function showResults() {
+      const total = answers.reduce(
+        (sum, item) => sum + (item?.score || 0),
+        0
+      );
+
+      const score = Math.round(
+        total / (questions.length * 4) * 100
+      );
+
+      const scores = categoryScores();
+
+      let title;
+      let copy;
+
+      if (score >= 85) {
+        title = "You’re ready to move with confidence";
+
+        copy =
+          "Your fundamentals are strong. A detailed quote based on your confirmed inventory and logistics is the clearest next step.";
+      } else if (score >= 68) {
+        title = "You’re close—just tighten a few details";
+
+        copy =
+          "Most of your move is taking shape. Closing the remaining planning gaps will make your quote and move-day expectations clearer.";
+      } else if (score >= 48) {
+        title = "You have a solid starting point";
+
+        copy =
+          "You’re moving in the right direction, but a few important details still need definition before comparing quotes confidently.";
+      } else {
+        title = "You’re early—and that’s useful";
+
+        copy =
+          "This is the ideal time to organize the basics. A focused plan now can prevent rushed decisions and missing details later.";
+      }
+
+      el("score").textContent = score;
+
+      el("scoreRing").style.background =
+        `conic-gradient(
+          var(--gold) ${score * 3.6}deg,
+          #e8edf3 0deg
+        )`;
+
+      el("resultTitle").textContent = title;
+      el("resultCopy").textContent = copy;
+
+      el("breakdown").innerHTML =
+        Object.entries(scores)
+          .map(
+            ([name, value]) =>
+              `<div class="metric">
+                <strong>${value}%</strong>
+                <span>${name}</span>
+              </div>`
+          )
+          .join("");
+
+      const lowest = Object.entries(scores)
+        .sort((a, b) => a[1] - b[1])
+        .slice(0, 3);
+
+      el("nextSteps").innerHTML = "";
+
+      lowest.forEach(([name]) => {
+        const li = document.createElement("li");
+        li.textContent = categoryAdvice[name];
+        el("nextSteps").appendChild(li);
+      });
+
+      if (route) {
+        el("routePill").textContent =
+          `Move: ${route}`;
+
+        el("routePill").classList.add("show");
+      }
+
+      const handoff = new URL(quoteUrl);
+
+      handoff.searchParams.set(
+        "source",
+        "moveready"
+      );
+
+      handoff.searchParams.set(
+        "readiness_score",
+        String(score)
+      );
+
+      if (route) {
+        handoff.searchParams.set(
+          "route",
+          route
+        );
+      }
+
+      el("quoteCta").href = handoff.href;
+
+      el("quoteCta").textContent =
+        score >= 68
+          ? "Get personalized quote help"
+          : "Build my moving quote plan";
+
+      el("cardHead").classList.add("hide");
+      el("questionWrap").classList.add("hide");
+      el("results").classList.add("show");
+
+      el("results").focus?.();
+    }
+
+    el("nextBtn").addEventListener(
+      "click",
+      () => {
+        if (answers[current] === null) {
+          return;
+        }
+
+        if (current < questions.length - 1) {
+          current++;
+          renderQuestion();
+        } else {
+          showResults();
+        }
+      }
+    );
+
+    el("backBtn").addEventListener(
+      "click",
+      () => {
+        if (current > 0) {
+          current--;
+          renderQuestion();
+        }
+      }
+    );
+
+    el("retakeBtn").addEventListener(
+      "click",
+      () => {
+        current = 0;
+        answers = Array(questions.length).fill(null);
+
+        el("results").classList.remove("show");
+        el("cardHead").classList.remove("hide");
+        el("questionWrap").classList.remove("hide");
+
+        renderQuestion();
+
+        scrollTo({
+          top: 0,
+          behavior: "smooth"
+        });
+      }
+    );
+
+    renderQuestion();
+  </script>
+</body>
+</html>
