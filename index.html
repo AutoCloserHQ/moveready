@@ -710,7 +710,7 @@
 
         <ul class="benefits">
           <li>No email required to see your result</li>
-          <li>Built for long-distance and specialty moves</li>
+          <li>Built for local and long-distance moves</li>
           <li>Practical recommendations—not generic advice</li>
         </ul>
 
@@ -1234,8 +1234,23 @@
       const handoff = new URL(quoteUrl);
 
       handoff.searchParams.set(
-        "source",
+        "utm_source",
         "moveready"
+      );
+
+      handoff.searchParams.set(
+        "utm_medium",
+        "internal"
+      );
+
+      handoff.searchParams.set(
+        "utm_campaign",
+        "moveready"
+      );
+
+      handoff.searchParams.set(
+        "utm_content",
+        "score_result_cta"
       );
 
       handoff.searchParams.set(
