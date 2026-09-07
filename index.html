@@ -973,7 +973,7 @@
     const params = new URLSearchParams(location.search);
 
     const safeText = (value, fallback, max = 60) =>
-      value && /^[\w .,'&()\-]+$/.test(value)
+      value && /^[\w .,'&()\-↔→]+$/u.test(value)
         ? value.slice(0, max)
         : fallback;
 
